@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="webwork:war">
+    <output-path>$PROJECT_DIR$/webwork/target</output-path>
+    <root id="archive" name="webwork-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="webwork:war exploded" />
+    </root>
+  </artifact>
+</component>

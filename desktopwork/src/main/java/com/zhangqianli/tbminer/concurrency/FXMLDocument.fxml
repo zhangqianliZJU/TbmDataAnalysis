@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tbminer.concurrency.FXMLDocumentController"
+            prefHeight="400.0" prefWidth="600.0"
+            id="AnchorPane">
+<children>
+    <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69"/>
+    <ProgressBar fx:id="progress1" layoutX="37.0" layoutY="35.0" prefHeight="23.0" prefWidth="393.0" progress="0.0"/>
+    <ProgressIndicator fx:id="progress2" layoutX="37.0" layoutY="84.0" prefHeight="72.0" prefWidth="88.0" progress="0"/>
+    <Text fx:id="progress3" layoutX="37.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="400"/>
+    <Button fx:id="btn1" layoutX="226" layoutY="270" mnemonicParsing="false" text="Button"/>
+</children>
+</AnchorPane>

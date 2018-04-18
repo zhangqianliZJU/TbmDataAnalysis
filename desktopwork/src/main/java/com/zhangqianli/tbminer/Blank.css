@@ -1,0 +1,5 @@
+
+.chart{
+	/*关闭图标的symbol显示 */
+		-fx-create-symbols: false;	
+}

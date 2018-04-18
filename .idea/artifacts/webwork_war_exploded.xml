@@ -1,0 +1,28 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="webwork:war exploded">
+    <output-path>$PROJECT_DIR$/webwork/target/webwork-1.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="webwork" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.github.yannrichet:Rsession:1.8.3" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.12" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
+          <element id="library" level="project" name="Maven: com.github.yannrichet:JMathArray:1.0" />
+          <element id="library" level="project" name="Maven: gov.nist.math:jama:1.0.3" />
+          <element id="library" level="project" name="Maven: org.rosuda.REngine:REngine:2.1.0" />
+          <element id="library" level="project" name="Maven: org.rosuda.REngine:Rserve:1.8.1" />
+          <element id="library" level="project" name="Maven: com.r:rengine:1.0.0" />
+          <element id="library" level="project" name="Maven: com.r:rserve:1.0.0" />
+          <element id="library" level="project" name="Maven: com.matlab:matlabengine:1.0.0" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/webwork/target/webwork-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="webwork/web/Web" />
+    </root>
+  </artifact>
+</component>

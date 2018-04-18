@@ -1,0 +1,96 @@
+.chart{
+	-fx-padding: 10.0px;
+	-fx-background-color: darksalmon; 
+	/* */
+}
+.chart-content{
+	-fx-padding: 20.0px;
+	/*设置表格内容边距 ，表格内容与Legend，Title的边距*/
+	-fx-background-color: rgb(102.0,153.0,102.0);
+	-fx-create-symbols: false;
+}
+.chart-plot-background {
+    -fx-background-color:transparent;
+    /*设置成透明的，则颜色变为.chart-content的颜色 */
+
+    /*     -fx-background-color:rgb(179,128,179);*/
+}
+/*上面均为设置颜色 */
+
+.chart-legend{
+	 -fx-background-color:  rgb(255.0,255.0,77.0);
+   	-fx-padding: 20.0px;
+}
+.chart-legend-item-symbol{
+	-fx-background-radius: 0;
+}
+.chart-legend-item{
+    -fx-text-fill:dodgerblue;
+     -fx-shape: "M5,0 L10,8 L0,8 Z";
+     /*这里也可以设置形状，SVG图形 */
+}
+
+.chart-title {
+  -fx-text-fill:rgb(77,51,153);
+  -fx-font-size:20px ;
+}
+ 
+.axis-label {
+  -fx-text-fill: #4d3399;
+    -fx-font-size:20px ;  
+}
+/*设置X轴，Y轴网格线颜色 */
+.chart-vertical-grid-lines {
+    -fx-stroke: #3278fa;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #3278fa;
+}
+/*设置行和列的填充颜色 */
+.chart-alternative-row-fill {
+    -fx-fill: #99bcfd;
+    -fx-stroke: transparent;
+    -fx-stroke-width: 0;
+}
+.chart-alternative-col-fill{
+	-fx-fill:rgb(77,51,153);
+	-fx-stroke:transparent;
+	-fx-stroke-width:0;
+	}
+/*坐标轴设置 */
+.axis {
+    -fx-tick-label-fill: #914800;
+    -fx-tick-length: 20;
+    -fx-minor-tick-length: 10;
+}
+ 
+.axis-label {
+   -fx-text-fill: #462300; 
+}
+/*设置坐标轴上小柱子的粗细 */
+.axis-tick-mark {
+    -fx-stroke: #637040;
+    -fx-stroke-width: 3; 
+}
+.axis-minor-tick-mark {
+    -fx-stroke: #859656;
+}	
+/*设置曲线颜色，或者说series颜色 */
+.chart-series-line {    
+    -fx-stroke-width: 2px;
+    -fx-effect: null;
+}
+ 
+.default-color0.chart-series-line { -fx-stroke: #4d66cc; }
+.default-color1.chart-series-line { -fx-stroke: #f0e68c; }
+.default-color2.chart-series-line { -fx-stroke: #dda0dd; }
+/*与上面对应，改变Legend中symbol颜色 */
+.default-color0.chart-line-symbol { -fx-background-color: #e9967a, white; }
+.default-color1.chart-line-symbol { -fx-background-color: #f0e68c, white; }
+.default-color2.chart-line-symbol { -fx-background-color: #dda0dd, white; }
+
+/*设置离散数据点形状和形状 ，厉害了，果然是这样*/
+.chart-line-symbol{
+	-fx-shape:"M5,0 L10,8 L0,8 Z";
+	-fx-background-color: #4d66cc;
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tbminer.nestedcontrollers2.Controller1">
+    <children>
+        <GridPane layoutX="100" layoutY="40">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Button fx:id="btn1" mnemonicParsing="false" onAction="#onBtn1" text="Button1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextArea stylesheets="/tbminer/nestedcontrollers2/sample2.css" fx:id="tx1" prefHeight="30.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Button fx:id="btn2" mnemonicParsing="false" onAction="#onBtn2" text="Button2" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextArea fx:id="tx2" prefHeight="30.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Button fx:id="btn3" mnemonicParsing="false" onAction="#onBtn3" text="Button3" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextArea stylesheets="/tbminer/nestedcontrollers2/sample2.css" fx:id="tx3" prefHeight="30.0" prefWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </children>
+        </GridPane>
+        <GridPane layoutX="100" layoutY="200">
+            <children>
+                    <fx:include fx:id="gridPane2" source="f3.fxml" />
+            </children>
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+    </children>
+</AnchorPane>

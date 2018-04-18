@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TbmDataAnalysis.iml" filepath="$PROJECT_DIR$/TbmDataAnalysis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/desktopwork/desktopwork.iml" filepath="$PROJECT_DIR$/desktopwork/desktopwork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webwork/webwork.iml" filepath="$PROJECT_DIR$/webwork/webwork.iml" />
+    </modules>
+  </component>
+</project>

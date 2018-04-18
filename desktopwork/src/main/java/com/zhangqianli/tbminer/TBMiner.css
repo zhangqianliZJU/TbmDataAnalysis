@@ -1,0 +1,28 @@
+.chart{
+	/*关闭图标的symbol显示 */
+		-fx-create-symbols: false;	
+}
+/*设置曲线颜色，或者说series颜色 */
+.chart-content{
+	-fx-padding: 20.0px;
+	/*设置表格内容边距 ，表格内容与Legend，Title的边距*/
+	-fx-legend-side: right;
+}
+.chart-series-line {    
+    -fx-stroke-width: 2px;
+    -fx-effect: null;
+}
+ 
+.default-color0.chart-series-line { -fx-stroke: #4d66cc; }
+.default-color1.chart-series-line { -fx-stroke: #f0e68c; }
+.default-color2.chart-series-line { -fx-stroke: #dda0dd; }
+/*与上面对应，改变Legend中symbol颜色 */
+.default-color0.chart-line-symbol { -fx-background-color: #4d66cc, white; }
+.default-color1.chart-line-symbol { -fx-background-color: #f0e68c, white; }
+.default-color2.chart-line-symbol { -fx-background-color: #dda0dd, white; }
+
+/*设置离散数据点形状和形状 ，厉害了，果然是这样*/
+.chart-line-symbol{
+	/*	-fx-shape:"M5,0 L10,8 L0,8 Z"; */
+	-fx-background-color: #4d66cc;
+}

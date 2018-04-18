@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane fx:id="importTxtWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TxtWindowController">
+   <children>
+      <Button layoutX="373.0" layoutY="644.0" mnemonicParsing="false" text="选择TXT文件" />
+      <Text layoutX="92.0" layoutY="660.0" strokeType="OUTSIDE" strokeWidth="0.0" text="等待上传文件" wrappingWidth="131.12109375" />
+      <Label layoutX="247.0" layoutY="14.0" text="配置SQL数据库信息">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <GridPane fx:id="gridPane" alignment="CENTER" layoutX="20.0" layoutY="50.0" prefHeight="90.0" prefWidth="236.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="SqlURL" />
+            <Label text="USER" GridPane.rowIndex="1" />
+            <Label text="Password" GridPane.rowIndex="2" />
+            <PasswordField fx:id="passWord" promptText="input password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="sqlURL" cache="true" promptText="input sql url" GridPane.columnIndex="1" />
+            <TextField fx:id="userName" cache="true" promptText="input user name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Button fx:id="submitButton" layoutX="272.0" layoutY="117.0" mnemonicParsing="false" onAction="#onSubmitClick" text="Submit" />
+      <Button fx:id="resetButton" alignment="TOP_LEFT" layoutX="273.0" layoutY="84.0" mnemonicParsing="false" onAction="#onResetButtonClick" prefHeight="23.0" prefWidth="57.0" text="Reset" />
+      <Label layoutX="224.0" layoutY="170.0" text="选择需要导入SQL的TXT文件">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="openTxtButton" layoutX="14.0" layoutY="220.0" mnemonicParsing="false" onAction="#onOpenTxtButtonClick" text="选择TXT文件" />
+      <ListView fx:id="listView" layoutX="14.0" layoutY="391.0" prefHeight="200.0" prefWidth="578.0" />
+      <Button fx:id="importButton" layoutX="14.0" layoutY="254.0" mnemonicParsing="false" onAction="#importTxt" text="导入txt文件" />
+   </children>
+</AnchorPane>

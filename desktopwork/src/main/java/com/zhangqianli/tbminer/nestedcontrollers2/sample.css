@@ -1,0 +1,20 @@
+.button {
+    -fx-background-color: #000000;
+    -fx-text-fill: white;
+}
+
+.chart {
+    /*关闭图标的symbol显示 */
+    -fx-create-symbols: false;
+    -fx-text-fill: green;
+}
+
+.text-area {
+    -fx-text-fill: RGB(100%, 0%, 0%);
+    -fx-animated: false;
+    -fx-cursor: crosshair;
+    -fx-font:  italic bold 10pt "serif";
+    -fx-background-color: #1a31a0 radial-gradient(radius 100%, red, darkgray, black);
+}
+
+

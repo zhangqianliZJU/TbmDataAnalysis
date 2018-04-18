@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tbminer.TBMinerController2">
+    <top>
+        <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New"  />
+                        <MenuItem mnemonicParsing="false" text="Open"  />
+                        <MenuItem mnemonicParsing="false" text="Save"  />
+                        <MenuItem mnemonicParsing="false" text="Save As"  />
+                        <MenuItem mnemonicParsing="false" text="Restart"  />
+                        <MenuItem mnemonicParsing="false" text="Quit"  />
+                    </items>
+                </Menu>
+                <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <left>
+        <ScrollPane fx:id="scrollPaneLeft" prefHeight="775.0" prefWidth="208.0" BorderPane.alignment="CENTER">
+            <content>
+                <Accordion>
+                    <panes>
+                        <TitledPane animated="false" text="TXT文件导入SQL">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="280.0" prefWidth="200.0">
+                                    <children>
+                                        <Label layoutX="47.0" layoutY="14.0" text="配置SQL数据库信息" />
+                                        <GridPane layoutX="1.0" layoutY="39.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="64.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="136.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label text="SQLURL" />
+                                                <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="15.0" prefWidth="45.0" text="User" textAlignment="CENTER" GridPane.rowIndex="1" />
+                                                <Label text="PassWord" GridPane.rowIndex="2" />
+                                                <ComboBox fx:id="sqlURL" prefWidth="150.0" GridPane.columnIndex="1">
+                                                    <items>
+                                                        <FXCollections fx:factory="observableArrayList">
+                                                            <String fx:value="jdbc:mysql://localhost:3306/tbm" />
+                                                        </FXCollections>
+                                                    </items>
+                                                </ComboBox>
+                                                <TextField fx:id="userName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <PasswordField fx:id="passWord" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                            </children>
+                                        </GridPane>
+                                        <Button fx:id="reset" layoutX="59.0" layoutY="136.0" mnemonicParsing="false" onAction="#onReset" text="${userName.text}" />
+                                        <Button fx:id="submit" layoutX="127.0" layoutY="136.0" mnemonicParsing="false" onAction="#onSubmit" text="Submit" />
+                                        <Separator layoutX="-32.0" layoutY="165.0" prefHeight="8.0" prefWidth="236.0" />
+                                        <Label layoutX="54.0" layoutY="173.0" text="选择TXT格式数据" />
+                                        <Button fx:id="fileChoose" layoutX="68.0" layoutY="199.0" mnemonicParsing="false" onAction="#onFileChoose" text="选择文件" />
+                                        <Button fx:id="fileImport" layoutX="68.0" layoutY="238.0" mnemonicParsing="false" onAction="#onFileImport" text="导入文件" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="SQL统计信息">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="单日施工数据分析">
+                            <content>
+                                <AnchorPane fx:id="birchLaunch" minHeight="0.0" minWidth="0.0" prefHeight="431.0" prefWidth="200.0">
+                                    <children>
+                                        <Label layoutX="14.0" layoutY="14.0" text="1 请输入查询的施工日期" />
+                                        <ComboBox fx:id="dateSelection" layoutX="4.0" layoutY="39.0" onAction="#onDateSelection" prefHeight="23.0" prefWidth="170.0" promptText="格式：2015-07-08">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="2015-07-07" />
+                                                    <String fx:value="2015-07-08" />
+                                                    <String fx:value="2015-07-09" />
+                                                    <String fx:value="2015-07-10" />
+                                                    <String fx:value="2015-07-11" />
+                                                    <String fx:value="2015-07-12" />
+                                                    <String fx:value="2015-07-13" />
+                                                    <String fx:value="2015-07-14" />
+                                                    <String fx:value="2015-07-15" />
+                                                    <String fx:value="2015-07-16" />
+                                                    <String fx:value="2015-07-17" />
+                                                    <String fx:value="2015-07-18" />
+                                                    <String fx:value="2015-07-19" />
+                                                    <String fx:value="2015-07-20" />
+                                                    <String fx:value="2015-07-21" />
+                                                    <String fx:value="2015-07-22" />
+                                                    <String fx:value="2015-07-23" />
+                                                    <String fx:value="2015-07-24" />
+                                                    <String fx:value="2015-07-25" />
+                                                    <String fx:value="2015-07-26" />
+                                                    <String fx:value="2015-07-27" />
+                                                    <String fx:value="2015-07-29" />
+                                                    <String fx:value="2015-07-30" />
+                                                    <String fx:value="2015-07-31" />
+                                                    <String fx:value="2015-08-01" />
+                                                    <String fx:value="2015-08-02" />
+                                                    <String fx:value="2015-08-03" />
+                                                    <String fx:value="2015-08-04" />
+                                                    <String fx:value="2015-08-05" />
+                                                    <String fx:value="2015-08-06" />
+                                                    <String fx:value="2015-08-07" />
+                                                    <String fx:value="2015-08-08" />
+                                                    <String fx:value="2015-08-09" />
+                                                    <String fx:value="2015-08-10" />
+                                                    <String fx:value="2015-08-11" />
+                                                    <String fx:value="2015-08-12" />
+                                                    <String fx:value="2015-08-13" />
+                                                    <String fx:value="2015-08-14" />
+                                                    <String fx:value="2015-08-15" />
+                                                    <String fx:value="2015-08-16" />
+                                                    <String fx:value="2015-08-17" />
+                                                    <String fx:value="2015-08-18" />
+                                                    <String fx:value="2015-08-19" />
+                                                    <String fx:value="2015-08-20" />
+                                                    <String fx:value="2015-08-21" />
+                                                    <String fx:value="2015-08-22" />
+                                                    <String fx:value="2015-08-23" />
+                                                    <String fx:value="2015-08-24" />
+                                                    <String fx:value="2015-08-25" />
+                                                    <String fx:value="2015-08-26" />
+                                                    <String fx:value="2015-08-27" />
+                                                    <String fx:value="2015-08-28" />
+                                                    <String fx:value="2015-08-29" />
+                                                    <String fx:value="2015-08-30" />
+                                                    <String fx:value="2015-08-31" />
+                                                    <String fx:value="2015-09-01" />
+                                                    <String fx:value="2015-09-02" />
+                                                    <String fx:value="2015-09-03" />
+                                                    <String fx:value="2015-09-04" />
+                                                    <String fx:value="2015-09-05" />
+                                                    <String fx:value="2015-09-06" />
+                                                    <String fx:value="2015-09-07" />
+                                                    <String fx:value="2015-09-08" />
+                                                    <String fx:value="2015-09-09" />
+                                                    <String fx:value="2015-09-10" />
+                                                    <String fx:value="2015-09-11" />
+                                                    <String fx:value="2015-09-12" />
+                                                    <String fx:value="2015-09-13" />
+                                                    <String fx:value="2015-09-14" />
+                                                    <String fx:value="2015-09-15" />
+                                                    <String fx:value="2015-09-16" />
+                                                    <String fx:value="2015-09-17" />
+                                                    <String fx:value="2015-09-18" />
+                                                    <String fx:value="2015-09-19" />
+                                                    <String fx:value="2015-09-20" />
+                                                    <String fx:value="2015-09-21" />
+                                                    <String fx:value="2015-09-22" />
+                                                    <String fx:value="2015-09-23" />
+                                                    <String fx:value="2015-09-24" />
+                                                    <String fx:value="2015-09-25" />
+                                                    <String fx:value="2015-09-26" />
+                                                    <String fx:value="2015-09-27" />
+                                                    <String fx:value="2015-09-28" />
+                                                    <String fx:value="2015-09-29" />
+                                                    <String fx:value="2015-09-30" />
+                                                    <String fx:value="2015-10-01" />
+                                                    <String fx:value="2015-10-02" />
+                                                    <String fx:value="2015-10-03" />
+                                                    <String fx:value="2015-10-04" />
+                                                    <String fx:value="2015-10-05" />
+                                                    <String fx:value="2015-10-06" />
+                                                    <String fx:value="2015-10-08" />
+                                                    <String fx:value="2015-10-09" />
+                                                    <String fx:value="2015-10-10" />
+                                                    <String fx:value="2015-10-11" />
+                                                    <String fx:value="2015-10-12" />
+                                                    <String fx:value="2015-10-13" />
+                                                    <String fx:value="2015-10-14" />
+                                                    <String fx:value="2015-10-15" />
+                                                    <String fx:value="2015-10-16" />
+                                                    <String fx:value="2015-10-17" />
+                                                    <String fx:value="2015-10-18" />
+                                                    <String fx:value="2015-10-19" />
+                                                    <String fx:value="2015-10-20" />
+                                                    <String fx:value="2015-10-21" />
+                                                    <String fx:value="2015-10-22" />
+                                                    <String fx:value="2015-10-23" />
+                                                    <String fx:value="2015-10-24" />
+                                                    <String fx:value="2015-10-25" />
+                                                    <String fx:value="2015-10-26" />
+                                                    <String fx:value="2015-10-27" />
+                                                    <String fx:value="2015-10-28" />
+                                                    <String fx:value="2015-10-29" />
+                                                    <String fx:value="2015-10-30" />
+                                                    <String fx:value="2015-10-31" />
+                                                    <String fx:value="2015-11-01" />
+                                                    <String fx:value="2015-11-02" />
+                                                    <String fx:value="2015-11-03" />
+                                                    <String fx:value="2015-11-04" />
+                                                    <String fx:value="2015-11-05" />
+                                                    <String fx:value="2015-11-06" />
+                                                    <String fx:value="2015-11-07" />
+                                                    <String fx:value="2015-11-08" />
+                                                    <String fx:value="2015-11-09" />
+                                                    <String fx:value="2015-11-15" />
+                                                    <String fx:value="2015-11-30" />
+                                                    <String fx:value="2015-12-01" />
+                                                    <String fx:value="2015-12-02" />
+                                                    <String fx:value="2015-12-03" />
+                                                    <String fx:value="2015-12-13" />
+                                                    <String fx:value="2015-12-14" />
+                                                    <String fx:value="2015-12-15" />
+                                                    <String fx:value="2015-12-16" />
+                                                    <String fx:value="2015-12-17" />
+                                                    <String fx:value="2015-12-18" />
+                                                    <String fx:value="2015-12-19" />
+                                                    <String fx:value="2015-12-20" />
+                                                    <String fx:value="2015-12-21" />
+                                                    <String fx:value="2015-12-22" />
+                                                    <String fx:value="2015-12-23" />
+                                                    <String fx:value="2015-12-24" />
+                                                    <String fx:value="2015-12-25" />
+                                                    <String fx:value="2015-12-26" />
+                                                    <String fx:value="2015-12-27" />
+                                                    <String fx:value="2015-12-28" />
+                                                    <String fx:value="2015-12-29" />
+                                                    <String fx:value="2015-12-30" />
+                                                    <String fx:value="2015-12-31" />
+                                                    <String fx:value="2016-01-01" />
+                                                    <String fx:value="2016-01-02" />
+                                                    <String fx:value="2016-01-03" />
+                                                    <String fx:value="2016-01-04" />
+                                                    <String fx:value="2016-01-05" />
+                                                    <String fx:value="2016-01-06" />
+                                                    <String fx:value="2016-01-07" />
+                                                    <String fx:value="2016-01-08" />
+                                                    <String fx:value="2016-01-09" />
+                                                    <String fx:value="2016-01-10" />
+                                                    <String fx:value="2016-01-11" />
+                                                    <String fx:value="2016-01-12" />
+                                                    <String fx:value="2016-01-13" />
+                                                    <String fx:value="2016-01-14" />
+                                                    <String fx:value="2016-01-15" />
+                                                    <String fx:value="2016-01-16" />
+                                                    <String fx:value="2016-01-17" />
+                                                    <String fx:value="2016-01-18" />
+                                                    <String fx:value="2016-01-19" />
+                                                    <String fx:value="2016-01-20" />
+                                                    <String fx:value="2016-01-21" />
+                                                    <String fx:value="2016-01-22" />
+                                                    <String fx:value="2016-01-23" />
+                                                    <String fx:value="2016-01-24" />
+                                                    <String fx:value="2016-01-25" />
+                                                    <String fx:value="2016-01-26" />
+                                                    <String fx:value="2016-01-27" />
+                                                    <String fx:value="2016-01-28" />
+                                                    <String fx:value="2016-01-29" />
+                                                    <String fx:value="2016-01-30" />
+                                                    <String fx:value="2016-01-31" />
+                                                    <String fx:value="2016-02-01" />
+                                                    <String fx:value="2016-02-02" />
+                                                    <String fx:value="2016-02-03" />
+                                                    <String fx:value="2016-02-04" />
+                                                    <String fx:value="2016-02-05" />
+                                                    <String fx:value="2016-02-06" />
+                                                    <String fx:value="2016-02-07" />
+                                                    <String fx:value="2016-02-09" />
+                                                    <String fx:value="2016-02-10" />
+                                                    <String fx:value="2016-02-11" />
+                                                    <String fx:value="2016-02-12" />
+                                                    <String fx:value="2016-02-13" />
+                                                    <String fx:value="2016-02-14" />
+                                                    <String fx:value="2016-02-15" />
+                                                    <String fx:value="2016-02-16" />
+                                                    <String fx:value="2016-02-17" />
+                                                    <String fx:value="2016-02-18" />
+                                                    <String fx:value="2016-02-29" />
+                                                    <String fx:value="2016-03-07" />
+                                                    <String fx:value="2016-03-08" />
+                                                    <String fx:value="2016-03-09" />
+                                                    <String fx:value="2016-03-10" />
+                                                    <String fx:value="2016-03-11" />
+                                                    <String fx:value="2016-03-12" />
+                                                    <String fx:value="2016-03-13" />
+                                                    <String fx:value="2016-03-14" />
+                                                    <String fx:value="2016-03-15" />
+                                                    <String fx:value="2016-03-16" />
+                                                    <String fx:value="2016-03-17" />
+                                                    <String fx:value="2016-03-18" />
+                                                    <String fx:value="2016-03-19" />
+                                                    <String fx:value="2016-03-20" />
+                                                    <String fx:value="2016-03-21" />
+                                                    <String fx:value="2016-03-22" />
+                                                    <String fx:value="2016-03-23" />
+                                                    <String fx:value="2016-03-24" />
+                                                    <String fx:value="2016-03-26" />
+                                                    <String fx:value="2016-03-27" />
+                                                    <String fx:value="2016-03-28" />
+                                                    <String fx:value="2016-03-29" />
+                                                    <String fx:value="2016-03-30" />
+                                                    <String fx:value="2016-03-31" />
+                                                    <String fx:value="2016-04-01" />
+                                                    <String fx:value="2016-04-02" />
+                                                    <String fx:value="2016-04-04" />
+                                                    <String fx:value="2016-04-05" />
+                                                    <String fx:value="2016-04-06" />
+                                                    <String fx:value="2016-04-07" />
+                                                    <String fx:value="2016-04-08" />
+                                                    <String fx:value="2016-04-09" />
+                                                    <String fx:value="2016-04-10" />
+                                                    <String fx:value="2016-04-11" />
+                                                    <String fx:value="2016-04-13" />
+                                                    <String fx:value="2016-04-14" />
+                                                    <String fx:value="2016-04-20" />
+                                                    <String fx:value="2016-04-21" />
+                                                    <String fx:value="2016-04-22" />
+                                                    <String fx:value="2016-04-23" />
+                                                    <String fx:value="2016-04-24" />
+                                                    <String fx:value="2016-04-25" />
+                                                    <String fx:value="2016-04-26" />
+                                                    <String fx:value="2016-04-28" />
+                                                    <String fx:value="2016-04-30" />
+                                                    <String fx:value="2016-05-01" />
+                                                    <String fx:value="2016-05-02" />
+                                                    <String fx:value="2016-05-03" />
+                                                    <String fx:value="2016-05-05" />
+                                                    <String fx:value="2016-05-06" />
+                                                    <String fx:value="2016-05-09" />
+                                                    <String fx:value="2016-05-11" />
+                                                    <String fx:value="2016-05-13" />
+                                                    <String fx:value="2016-05-14" />
+                                                    <String fx:value="2016-05-16" />
+                                                    <String fx:value="2016-05-19" />
+                                                    <String fx:value="2016-05-24" />
+                                                    <String fx:value="2016-05-25" />
+                                                    <String fx:value="2016-05-26" />
+                                                    <String fx:value="2016-05-28" />
+                                                    <String fx:value="2016-05-29" />
+                                                    <String fx:value="2016-05-30" />
+                                                    <String fx:value="2016-06-21" />
+                                                    <String fx:value="2016-06-23" />
+                                                    <String fx:value="2016-06-25" />
+                                                    <String fx:value="2016-06-26" />
+                                                    <String fx:value="2016-06-27" />
+                                                    <String fx:value="2016-06-28" />
+                                                    <String fx:value="2016-06-30" />
+                                                    <String fx:value="2016-07-01" />
+                                                    <String fx:value="2016-07-02" />
+                                                    <String fx:value="2016-07-03" />
+                                                    <String fx:value="2016-07-04" />
+                                                    <String fx:value="2016-07-05" />
+                                                    <String fx:value="2016-07-06" />
+                                                    <String fx:value="2016-07-08" />
+                                                    <String fx:value="2016-07-10" />
+                                                    <String fx:value="2016-07-11" />
+                                                    <String fx:value="2016-07-12" />
+                                                    <String fx:value="2016-07-13" />
+                                                    <String fx:value="2016-07-14" />
+                                                    <String fx:value="2016-07-15" />
+                                                    <String fx:value="2016-07-16" />
+                                                    <String fx:value="2016-07-17" />
+                                                    <String fx:value="2016-07-18" />
+                                                    <String fx:value="2016-07-19" />
+                                                    <String fx:value="2016-07-20" />
+                                                    <String fx:value="2016-07-21" />
+                                                    <String fx:value="2016-07-22" />
+                                                    <String fx:value="2016-07-23" />
+                                                    <String fx:value="2016-07-24" />
+                                                    <String fx:value="2016-07-25" />
+                                                    <String fx:value="2016-07-26" />
+                                                    <String fx:value="2016-07-27" />
+                                                    <String fx:value="2016-07-28" />
+                                                    <String fx:value="2016-07-29" />
+                                                    <String fx:value="2016-07-30" />
+                                                    <String fx:value="2016-07-31" />
+                                                    <String fx:value="2016-08-01" />
+                                                    <String fx:value="2016-08-02" />
+                                                    <String fx:value="2016-08-03" />
+                                                    <String fx:value="2016-08-04" />
+                                                    <String fx:value="2016-08-05" />
+                                                    <String fx:value="2016-08-06" />
+                                                    <String fx:value="2016-08-08" />
+                                                    <String fx:value="2016-08-09" />
+                                                    <String fx:value="2016-08-10" />
+                                                    <String fx:value="2016-08-11" />
+                                                    <String fx:value="2016-08-12" />
+                                                    <String fx:value="2016-12-06" />
+                                                    <String fx:value="2016-12-07" />
+                                                    <String fx:value="2016-12-08" />
+                                                    <String fx:value="2016-12-09" />
+                                                    <String fx:value="2016-12-10" />
+                                                    <String fx:value="2016-12-11" />
+                                                    <String fx:value="2016-12-12" />
+                                                    <String fx:value="2016-12-13" />
+                                                    <String fx:value="2016-12-14" />
+                                                    <String fx:value="2016-12-15" />
+                                                    <String fx:value="2016-12-16" />
+                                                    <String fx:value="2016-12-17" />
+                                                    <String fx:value="2016-12-18" />
+                                                    <String fx:value="2016-12-19" />
+                                                    <String fx:value="2016-12-20" />
+                                                    <String fx:value="2016-12-21" />
+                                                    <String fx:value="2016-12-22" />
+                                                    <String fx:value="2016-12-23" />
+                                                    <String fx:value="2016-12-24" />
+                                                    <String fx:value="2016-12-25" />
+                                                    <String fx:value="2016-12-26" />
+                                                    <String fx:value="2016-12-27" />
+                                                    <String fx:value="2016-12-28" />
+                                                    <String fx:value="2016-12-30" />
+                                                    <String fx:value="2016-12-31" />
+                                                    <String fx:value="2017-01-01" />
+                                                    <String fx:value="2017-01-02" />
+                                                    <String fx:value="2017-01-03" />
+                                                    <String fx:value="2017-01-04" />
+                                                    <String fx:value="2017-01-05" />
+                                                    <String fx:value="2017-01-06" />
+                                                    <String fx:value="2017-01-07" />
+                                                    <String fx:value="2017-01-08" />
+                                                    <String fx:value="2017-01-09" />
+                                                    <String fx:value="2017-01-10" />
+                                                    <String fx:value="2017-01-12" />
+                                                    <String fx:value="2017-01-15" />
+                                                    <String fx:value="2017-01-16" />
+                                                    <String fx:value="2017-01-17" />
+                                                    <String fx:value="2017-01-18" />
+                                                    <String fx:value="2017-01-25" />
+                                                    <String fx:value="2017-01-26" />
+                                                    <String fx:value="2017-01-27" />
+                                                    <String fx:value="2017-01-29" />
+                                                    <String fx:value="2017-01-30" />
+                                                    <String fx:value="2017-01-31" />
+                                                    <String fx:value="2017-02-01" />
+                                                    <String fx:value="2017-02-02" />
+                                                    <String fx:value="2017-02-03" />
+                                                    <String fx:value="2017-02-04" />
+                                                    <String fx:value="2017-02-05" />
+                                                    <String fx:value="2017-02-06" />
+                                                    <String fx:value="2017-02-07" />
+                                                    <String fx:value="2017-02-08" />
+                                                    <String fx:value="2017-02-09" />
+                                                    <String fx:value="2017-02-10" />
+                                                    <String fx:value="2017-02-11" />
+                                                    <String fx:value="2017-02-12" />
+                                                    <String fx:value="2017-02-13" />
+                                                    <String fx:value="2017-02-18" />
+                                                    <String fx:value="2017-02-19" />
+                                                    <String fx:value="2017-02-20" />
+                                                    <String fx:value="2017-02-21" />
+                                                    <String fx:value="2017-02-22" />
+                                                    <String fx:value="2017-02-23" />
+                                                    <String fx:value="2017-02-25" />
+                                                    <String fx:value="2017-02-26" />
+                                                    <String fx:value="2017-02-27" />
+                                                    <String fx:value="2017-02-28" />
+                                                    <String fx:value="2017-03-01" />
+                                                    <String fx:value="2017-03-02" />
+                                                    <String fx:value="2017-03-03" />
+                                                    <String fx:value="2017-03-04" />
+                                                    <String fx:value="2017-03-05" />
+                                                    <String fx:value="2017-03-06" />
+                                                    <String fx:value="2017-03-07" />
+                                                    <String fx:value="2017-03-08" />
+                                                    <String fx:value="2017-03-09" />
+                                                    <String fx:value="2017-03-11" />
+                                                    <String fx:value="2017-03-12" />
+                                                    <String fx:value="2017-03-13" />
+                                                    <String fx:value="2017-03-15" />
+                                                    <String fx:value="2017-03-16" />
+                                                    <String fx:value="2017-03-17" />
+                                                    <String fx:value="2017-03-18" />
+                                                    <String fx:value="2017-03-19" />
+                                                    <String fx:value="2017-03-20" />
+                                                    <String fx:value="2017-03-21" />
+                                                    <String fx:value="2017-03-22" />
+                                                    <String fx:value="2017-03-23" />
+                                                    <String fx:value="2017-03-25" />
+                                                    <String fx:value="2017-03-26" />
+                                                    <String fx:value="2017-03-27" />
+                                                    <String fx:value="2017-03-28" />
+                                                    <String fx:value="2017-03-29" />
+                                                    <String fx:value="2017-03-30" />
+                                                    <String fx:value="2017-04-01" />
+                                                    <String fx:value="2017-04-02" />
+                                                    <String fx:value="2017-04-03" />
+                                                    <String fx:value="2017-04-04" />
+                                                    <String fx:value="2017-04-05" />
+                                                    <String fx:value="2017-04-06" />
+                                                    <String fx:value="2017-04-07" />
+                                                    <String fx:value="2017-04-08" />
+                                                    <String fx:value="2017-04-09" />
+                                                    <String fx:value="2017-04-10" />
+                                                    <String fx:value="2017-04-13" />
+                                                    <String fx:value="2017-04-14" />
+                                                    <String fx:value="2017-04-15" />
+                                                    <String fx:value="2017-04-16" />
+                                                    <String fx:value="2017-04-17" />
+                                                    <String fx:value="2017-04-19" />
+                                                    <String fx:value="2017-04-23" />
+                                                    <String fx:value="2017-04-24" />
+                                                    <String fx:value="2017-04-27" />
+                                                    <String fx:value="2017-04-28" />
+                                                    <String fx:value="2017-04-30" />
+                                                    <String fx:value="2017-05-01" />
+                                                    <String fx:value="2017-05-02" />
+                                                    <String fx:value="2017-05-03" />
+                                                    <String fx:value="2017-05-04" />
+                                                    <String fx:value="2017-05-05" />
+                                                    <String fx:value="2017-05-06" />
+                                                    <String fx:value="2017-05-07" />
+                                                    <String fx:value="2017-05-09" />
+                                                    <String fx:value="2017-05-11" />
+                                                    <String fx:value="2017-05-12" />
+                                                    <String fx:value="2017-05-14" />
+                                                    <String fx:value="2017-05-16" />
+                                                    <String fx:value="2017-05-17" />
+                                                    <String fx:value="2017-05-18" />
+                                                    <String fx:value="2017-05-19" />
+                                                    <String fx:value="2017-05-20" />
+                                                    <String fx:value="2017-05-21" />
+                                                    <String fx:value="2017-05-22" />
+                                                    <String fx:value="2017-05-23" />
+                                                    <String fx:value="2017-05-24" />
+                                                    <String fx:value="2017-05-25" />
+                                                    <String fx:value="2017-05-27" />
+                                                    <String fx:value="2017-05-28" />
+                                                    <String fx:value="2017-06-02" />
+                                                    <String fx:value="2017-06-09" />
+                                                    <String fx:value="2017-06-10" />
+                                                    <String fx:value="2017-06-11" />
+                                                    <String fx:value="2017-06-14" />
+                                                    <String fx:value="2017-06-15" />
+                                                    <String fx:value="2017-06-30" />
+                                                    <String fx:value="2017-07-01" />
+                                                    <String fx:value="2017-07-03" />
+                                                    <String fx:value="2017-07-04" />
+                                                    <String fx:value="2017-07-05" />
+                                                    <String fx:value="2017-07-07" />
+                                                    <String fx:value="2017-07-08" />
+                                                    <String fx:value="2017-07-09" />
+                                                    <String fx:value="2017-07-10" />
+                                                    <String fx:value="2017-07-11" />
+                                                    <String fx:value="2017-07-12" />
+                                                    <String fx:value="2017-07-13" />
+                                                    <String fx:value="2017-07-15" />
+                                                    <String fx:value="2017-07-25" />
+                                                    <String fx:value="2017-07-26" />
+                                                    <String fx:value="2017-07-28" />
+                                                    <String fx:value="2017-07-29" />
+                                                    <String fx:value="2017-07-30" />
+                                                    <String fx:value="2017-07-31" />
+                                                    <String fx:value="2017-08-01" />
+                                                    <String fx:value="2017-08-02" />
+                                                    <String fx:value="2017-08-08" />
+                                                    <String fx:value="2017-08-09" />
+                                                    <String fx:value="2017-08-11" />
+                                                    <String fx:value="2017-08-12" />
+                                                    <String fx:value="2017-08-13" />
+                                                    <String fx:value="2017-08-14" />
+                                                    <String fx:value="2017-08-15" />
+                                                    <String fx:value="2017-08-16" />
+                                                    <String fx:value="2017-08-17" />
+                                                    <String fx:value="2017-08-18" />
+                                                    <String fx:value="2017-08-27" />
+                                                    <String fx:value="2017-09-01" />
+                                                    <String fx:value="2017-09-02" />
+                                                    <String fx:value="2017-09-03" />
+                                                    <String fx:value="2017-09-04" />
+                                                    <String fx:value="2017-09-05" />
+                                                    <String fx:value="2017-09-07" />
+                                                    <String fx:value="2017-09-08" />
+                                                    <String fx:value="2017-09-09" />
+                                                    <String fx:value="2017-09-11" />
+                                                    <String fx:value="2017-09-12" />
+                                                    <String fx:value="2017-09-14" />
+                                                    <String fx:value="2017-09-15" />
+                                                    <String fx:value="2017-09-17" />
+                                                    <String fx:value="2017-09-18" />
+                                                    <String fx:value="2017-09-19" />
+                                                    <String fx:value="2017-09-20" />
+                                                    <String fx:value="2017-09-21" />
+                                                    <String fx:value="2017-09-24" />
+                                                    <String fx:value="2017-09-26" />
+                                                    <String fx:value="2017-10-01" />
+                                                    <String fx:value="2017-10-06" />
+                                                    <String fx:value="2017-10-08" />
+                                                    <String fx:value="2017-10-11" />
+                                                    <String fx:value="2017-10-12" />
+                                                    <String fx:value="2017-10-13" />
+                                                    <String fx:value="2017-10-14" />
+                                                    <String fx:value="2017-10-19" />
+                                                    <String fx:value="2017-10-20" />
+                                                    <String fx:value="2017-10-21" />
+                                                    <String fx:value="2017-10-23" />
+                                                </FXCollections>
+                                            </items>
+                                        </ComboBox>
+                                        <ComboBox fx:id="attrSelection" layoutX="5.0" layoutY="121.0" onAction="#onAttrSelection" prefHeight="23.0" prefWidth="168.0" promptText="格式：attr1~attr200">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="attr1" />
+                                                    <String fx:value="attr2" />
+                                                    <String fx:value="attr3" />
+                                                    <String fx:value="attr4" />
+                                                    <String fx:value="attr5" />
+                                                    <String fx:value="attr6" />
+                                                    <String fx:value="attr7" />
+                                                    <String fx:value="attr8" />
+                                                    <String fx:value="attr9" />
+                                                    <String fx:value="attr10" />
+                                                    <String fx:value="attr11" />
+                                                    <String fx:value="attr12" />
+                                                    <String fx:value="attr13" />
+                                                    <String fx:value="attr14" />
+                                                    <String fx:value="attr15" />
+                                                    <String fx:value="attr16" />
+                                                    <String fx:value="attr17" />
+                                                    <String fx:value="attr18" />
+                                                    <String fx:value="attr19" />
+                                                    <String fx:value="attr20" />
+                                                    <String fx:value="attr21" />
+                                                    <String fx:value="attr22" />
+                                                    <String fx:value="attr23" />
+                                                    <String fx:value="attr24" />
+                                                    <String fx:value="attr25" />
+                                                    <String fx:value="attr26" />
+                                                    <String fx:value="attr27" />
+                                                    <String fx:value="attr28" />
+                                                    <String fx:value="attr29" />
+                                                    <String fx:value="attr30" />
+                                                    <String fx:value="attr31" />
+                                                    <String fx:value="attr32" />
+                                                    <String fx:value="attr33" />
+                                                    <String fx:value="attr34" />
+                                                    <String fx:value="attr35" />
+                                                    <String fx:value="attr36" />
+                                                    <String fx:value="attr37" />
+                                                    <String fx:value="attr38" />
+                                                    <String fx:value="attr39" />
+                                                    <String fx:value="attr40" />
+                                                    <String fx:value="attr41" />
+                                                    <String fx:value="attr42" />
+                                                    <String fx:value="attr43" />
+                                                    <String fx:value="attr44" />
+                                                    <String fx:value="attr45" />
+                                                    <String fx:value="attr46" />
+                                                    <String fx:value="attr47" />
+                                                    <String fx:value="attr48" />
+                                                    <String fx:value="attr49" />
+                                                    <String fx:value="attr50" />
+                                                    <String fx:value="attr51" />
+                                                    <String fx:value="attr52" />
+                                                    <String fx:value="attr53" />
+                                                    <String fx:value="attr54" />
+                                                    <String fx:value="attr55" />
+                                                    <String fx:value="attr56" />
+                                                    <String fx:value="attr57" />
+                                                    <String fx:value="attr58" />
+                                                    <String fx:value="attr59" />
+                                                    <String fx:value="attr60" />
+                                                    <String fx:value="attr61" />
+                                                    <String fx:value="attr62" />
+                                                    <String fx:value="attr63" />
+                                                    <String fx:value="attr64" />
+                                                    <String fx:value="attr65" />
+                                                    <String fx:value="attr66" />
+                                                    <String fx:value="attr67" />
+                                                    <String fx:value="attr68" />
+                                                    <String fx:value="attr69" />
+                                                    <String fx:value="attr70" />
+                                                    <String fx:value="attr71" />
+                                                    <String fx:value="attr72" />
+                                                    <String fx:value="attr73" />
+                                                    <String fx:value="attr74" />
+                                                    <String fx:value="attr75" />
+                                                    <String fx:value="attr76" />
+                                                    <String fx:value="attr77" />
+                                                    <String fx:value="attr78" />
+                                                    <String fx:value="attr79" />
+                                                    <String fx:value="attr80" />
+                                                    <String fx:value="attr81" />
+                                                    <String fx:value="attr82" />
+                                                    <String fx:value="attr83" />
+                                                    <String fx:value="attr84" />
+                                                    <String fx:value="attr85" />
+                                                    <String fx:value="attr86" />
+                                                    <String fx:value="attr87" />
+                                                    <String fx:value="attr88" />
+                                                    <String fx:value="attr89" />
+                                                    <String fx:value="attr90" />
+                                                    <String fx:value="attr91" />
+                                                    <String fx:value="attr92" />
+                                                    <String fx:value="attr93" />
+                                                    <String fx:value="attr94" />
+                                                    <String fx:value="attr95" />
+                                                    <String fx:value="attr96" />
+                                                    <String fx:value="attr97" />
+                                                    <String fx:value="attr98" />
+                                                    <String fx:value="attr99" />
+                                                    <String fx:value="attr100" />
+                                                    <String fx:value="attr101" />
+                                                    <String fx:value="attr102" />
+                                                    <String fx:value="attr103" />
+                                                    <String fx:value="attr104" />
+                                                    <String fx:value="attr105" />
+                                                    <String fx:value="attr106" />
+                                                    <String fx:value="attr107" />
+                                                    <String fx:value="attr108" />
+                                                    <String fx:value="attr109" />
+                                                    <String fx:value="attr110" />
+                                                    <String fx:value="attr111" />
+                                                    <String fx:value="attr112" />
+                                                    <String fx:value="attr113" />
+                                                    <String fx:value="attr114" />
+                                                    <String fx:value="attr115" />
+                                                    <String fx:value="attr116" />
+                                                    <String fx:value="attr117" />
+                                                    <String fx:value="attr118" />
+                                                    <String fx:value="attr119" />
+                                                    <String fx:value="attr120" />
+                                                    <String fx:value="attr121" />
+                                                    <String fx:value="attr122" />
+                                                    <String fx:value="attr123" />
+                                                    <String fx:value="attr124" />
+                                                    <String fx:value="attr125" />
+                                                    <String fx:value="attr126" />
+                                                    <String fx:value="attr127" />
+                                                    <String fx:value="attr128" />
+                                                    <String fx:value="attr129" />
+                                                    <String fx:value="attr130" />
+                                                    <String fx:value="attr131" />
+                                                    <String fx:value="attr132" />
+                                                    <String fx:value="attr133" />
+                                                    <String fx:value="attr134" />
+                                                    <String fx:value="attr135" />
+                                                    <String fx:value="attr136" />
+                                                    <String fx:value="attr137" />
+                                                    <String fx:value="attr138" />
+                                                    <String fx:value="attr139" />
+                                                    <String fx:value="attr140" />
+                                                    <String fx:value="attr141" />
+                                                    <String fx:value="attr142" />
+                                                    <String fx:value="attr143" />
+                                                    <String fx:value="attr144" />
+                                                    <String fx:value="attr145" />
+                                                    <String fx:value="attr146" />
+                                                    <String fx:value="attr147" />
+                                                    <String fx:value="attr148" />
+                                                    <String fx:value="attr149" />
+                                                    <String fx:value="attr150" />
+                                                    <String fx:value="attr151" />
+                                                    <String fx:value="attr152" />
+                                                    <String fx:value="attr153" />
+                                                    <String fx:value="attr154" />
+                                                    <String fx:value="attr155" />
+                                                    <String fx:value="attr156" />
+                                                    <String fx:value="attr157" />
+                                                    <String fx:value="attr158" />
+                                                    <String fx:value="attr159" />
+                                                    <String fx:value="attr160" />
+                                                    <String fx:value="attr161" />
+                                                    <String fx:value="attr162" />
+                                                    <String fx:value="attr163" />
+                                                    <String fx:value="attr164" />
+                                                    <String fx:value="attr165" />
+                                                    <String fx:value="attr166" />
+                                                    <String fx:value="attr167" />
+                                                    <String fx:value="attr168" />
+                                                    <String fx:value="attr169" />
+                                                    <String fx:value="attr170" />
+                                                    <String fx:value="attr171" />
+                                                    <String fx:value="attr172" />
+                                                    <String fx:value="attr173" />
+                                                    <String fx:value="attr174" />
+                                                    <String fx:value="attr175" />
+                                                    <String fx:value="attr176" />
+                                                    <String fx:value="attr177" />
+                                                    <String fx:value="attr178" />
+                                                    <String fx:value="attr179" />
+                                                    <String fx:value="attr180" />
+                                                    <String fx:value="attr181" />
+                                                    <String fx:value="attr182" />
+                                                    <String fx:value="attr183" />
+                                                    <String fx:value="attr184" />
+                                                    <String fx:value="attr185" />
+                                                    <String fx:value="attr186" />
+                                                    <String fx:value="attr187" />
+                                                    <String fx:value="attr188" />
+                                                    <String fx:value="attr189" />
+                                                    <String fx:value="attr190" />
+                                                    <String fx:value="attr191" />
+                                                    <String fx:value="attr192" />
+                                                    <String fx:value="attr193" />
+                                                    <String fx:value="attr194" />
+                                                    <String fx:value="attr195" />
+                                                    <String fx:value="attr196" />
+                                                    <String fx:value="attr197" />
+                                                    <String fx:value="attr198" />
+                                                    <String fx:value="attr199" />
+                                                    <String fx:value="attr200" />
+
+                                                </FXCollections>
+                                            </items>
+                                        </ComboBox>
+                                        <Label layoutX="14.0" layoutY="99.0" text="2 请输入要查看的属性" />
+                                        <Button fx:id="dateSubmit" layoutX="53.0" layoutY="70.0" mnemonicParsing="false" onAction="#onDateSubmit" text="submit" />
+                                        <Button fx:id="attrSubmit" layoutX="53.0" layoutY="150.0" mnemonicParsing="false" onAction="#onAttrSubmit" text="submit1" />
+                                        <Separator layoutY="198.0" prefWidth="200.0" />
+                                        <Label layoutX="17.0" layoutY="208.0" text="请输入需要成组查看的属性" />
+                                        <ComboBox fx:id="groupAttributes" layoutX="14.0" layoutY="237.0" onAction="#onGroupSelection" prefWidth="150.0" promptText="请选择成组属性">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="motor_current" />
+                                                    <String fx:value="motor_torque" />
+                                                    <String fx:value="motor_frequence" />
+                                                    <String fx:value="motor_power" />
+                                                    <String fx:value="motor_temp" />
+
+
+                                                </FXCollections>
+                                            </items>
+                                        </ComboBox>
+                                        <Button fx:id="groupSubmit" layoutX="47.0" layoutY="268.0" mnemonicParsing="false" onAction="#onGroupAttributes" text="submit2" />
+                                        <Separator layoutY="301.0" prefWidth="200.0" />
+                                        <Label layoutX="45.0" layoutY="317.0" prefHeight="15.0" prefWidth="89.0" text="动态BIRCH算法" />
+                                        <Button fx:id="birchLauch" layoutX="40.0" layoutY="346.0" mnemonicParsing="false" onAction="#onBirchLaunch3" text="BIRCH可视化" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                    </panes>
+                </Accordion>
+            </content>
+        </ScrollPane>
+    </left>
+    <bottom>
+        <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <content>
+                <TabPane prefHeight="200.0" prefWidth="1188.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab text="Console">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <ListView fx:id="listView" prefHeight="171.0" prefWidth="1188.0" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Untitled Tab 2">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </content>
+        </ScrollPane>
+    </bottom>
+    <right>
+        <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+            </content>
+        </ScrollPane>
+    </right>
+    <center>
+        <TabPane fx:id="centerTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="Tab 1">
+                    <ImageView>
+                        <image>
+                            <Image url="@p1.jpg"/>
+                        </image>
+                    </ImageView>
+                </Tab>
+                <Tab text="Tab 2" />
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

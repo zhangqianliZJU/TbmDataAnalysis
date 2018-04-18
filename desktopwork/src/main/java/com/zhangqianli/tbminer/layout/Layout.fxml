@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.collections.FXCollections?>
+
+<BorderPane prefHeight="800" prefWidth="1200" style="-fx-background-image: url(/tbminer/layout/aa.JPG);"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="File">
+
+                </Menu>
+                <Menu text="Edit"/>
+                <Menu text="Help"/>
+            </menus>
+        </MenuBar>
+    </top>
+    <left>
+        <ScrollPane hbarPolicy="AS_NEEDED" maxHeight="Infinity" maxWidth="Infinity" prefWidth="190.0"
+                    vbarPolicy="AS_NEEDED">
+            <content>
+                <Accordion>
+                    <panes>
+                        <TitledPane text="TXT格式数据导入SQL数据库" alignment="BASELINE_LEFT">
+                                <Label text="配置数据库信息" style="-fx-font-size: 12" layoutX="0"/>
+                                <GridPane layoutX="0" layoutY="20" vgap="5">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="100" minWidth="10.0"
+                                                           prefWidth="20"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="100" minWidth="10.0"
+                                                           prefWidth="80"/>
+                                    </columnConstraints>
+                                    <children>
+                                        <Label text="配置数据库信息" style="-fx-font-size: 12" layoutX="0" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+                                        <Label text="SQL URL" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                                               layoutX="0"/>
+                                        <Label text="USER" GridPane.columnIndex="0" GridPane.rowIndex="2" layoutX="0"/>
+                                        <ComboBox GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="100">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="jdbc:mysql://localhost:3306/tbm"/>
+                                                </FXCollections>
+                                            </items>
+                                        </ComboBox>
+                                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="100"/>
+                                        <Label text="Password" GridPane.columnIndex="0" GridPane.rowIndex="3"
+                                               layoutX="0"/>
+                                        <PasswordField GridPane.rowIndex="3" GridPane.columnIndex="1" prefWidth="100"/>
+                                    </children>
+                                    <columnConstraints>
+                                        <ColumnConstraints/>
+                                        <ColumnConstraints/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints/>
+                                    </rowConstraints>
+                                </GridPane>
+
+                        </TitledPane>
+                        <TitledPane text="SQL统计信息">
+
+                        </TitledPane>
+                        <TitledPane text="单日施工数据分析"/>
+                    </panes>
+                </Accordion>
+            </content>
+        </ScrollPane>
+    </left>
+    <bottom>
+
+    </bottom>
+    <center>
+
+    </center>
+</BorderPane>
